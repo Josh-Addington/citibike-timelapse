@@ -1,11 +1,11 @@
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "tango_with_django_project.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "citibike_viz_project.settings")
 
 import django
 django.setup()
 
 import csv
-from rango.models import Station, TripStart, TripEnd
+from map.models import Station, TripStart, TripEnd
 from decimal import *
 import requests
 import json
@@ -14,9 +14,8 @@ import json
 getcontext().prec = 9
 
 
-folder = 'citibike data'
+folder = 'data'
 file_list = os.listdir(folder)
-
 
 # Tried to create a trips array in iter_over_file(),
 # pass it to get_info() and have get_info append each trip
@@ -28,16 +27,16 @@ station_amount = len(response['stationBeanList'])
 
 def iter_over_files(list):
         # Create a dict of stations, to prevent duplicates
-        stations = {}
+        # stations = {}
 
         # fill Stations table first
         # Trips table depends on Stations table
-        for file in list:
-                stations.update(get_stations(os.path.join(folder, file), stations))
-                if(len(stations) == station_amount):
-                        break
+        # for file in list:
+        #       stations.update(get_stations(os.path.join(folder, file), stations))
+        #        if(len(stations) == station_amount):
+        #                break
         # Populate Stations table using stations dict
-        populate_stations(stations)
+        # populate_stations(stations)
 
         # fill Trips table
         for file in list:
