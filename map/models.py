@@ -15,16 +15,9 @@ class Station(models.Model):
                 return self.id
 
 
-class TripStart(models.Model):
+class Bike(models.Model):
         station = models.ForeignKey(Station, related_name='start')
-        time = models.DateTimeField()
-
-        def __str__(self):
-                return str(self.id)
-
-
-class TripEnd(models.Model):
-        station = models.ForeignKey(Station, related_name='end')
+        number_of_bikes = models.IntegerField()
         time = models.DateTimeField()
 
         def __str__(self):

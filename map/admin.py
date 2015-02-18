@@ -1,7 +1,6 @@
 from django.contrib import admin
-from map.models import Station, TripStart, TripEnd
+from map.models import Station, Bike
 
 # Register your models here.
 admin.site.register(Station)
-admin.site.register(TripStart)
-admin.site.register(TripEnd)
+admin.site.register(Bike)
